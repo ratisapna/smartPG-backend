@@ -5,6 +5,8 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import rateLimit from "express-rate-limit";
+import authRoutes from "./routes/authRoutes.js";
+console.log(authRoutes);
 
 const app = express();
 
@@ -35,6 +37,8 @@ app.get("/health", (req, res) => {
 
 
 /* ---------- API Routes ---------- */
+app.use("/api/auth", authRoutes);
+console.log("Auth routes loaded");
 
 
 
