@@ -6,7 +6,19 @@ import helmet from "helmet";
 import morgan from "morgan";
 import rateLimit from "express-rate-limit";
 import authRoutes from "./routes/authRoutes.js";
-console.log(authRoutes);
+import pgRoutes from "./routes/pgRoutes.js";
+import roomRoutes from "./routes/roomRoutes.js";
+import tenantRoutes from "./routes/tenantRoutes.js";
+import feesRoutes from "./routes/feesRoutes.js";
+import paymentRoutes from "./routes/paymentRoutes.js";
+import complaintRoutes from "./routes/complaintRoutes.js";
+import visitRoutes from "./routes/visitRoutes.js";
+import dashboardRoutes from "./routes/dashboardRoutes.js";
+import bedRoutes from "./routes/bedRoutes.js";
+import documentRoutes from "./routes/documentRoutes.js";
+import exitRoutes from "./routes/exitRoutes.js";
+import activityRoutes from "./routes/activityRoutes.js";
+
 
 const app = express();
 
@@ -38,7 +50,18 @@ app.get("/health", (req, res) => {
 
 /* ---------- API Routes ---------- */
 app.use("/api/auth", authRoutes);
-console.log("Auth routes loaded");
+app.use("/api/pg", pgRoutes);
+app.use("/api/rooms", roomRoutes);
+app.use("/api/beds",bedRoutes);
+app.use("/api/tenants", tenantRoutes);
+app.use("/api/fees", feesRoutes);
+app.use("/api/payments", paymentRoutes);
+app.use("/api/complaints", complaintRoutes);
+app.use("/api/visits", visitRoutes);
+app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/documents", documentRoutes);
+app.use("/api/exits", exitRoutes);
+app.use("/api/activity", activityRoutes);
 
 
 
