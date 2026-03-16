@@ -38,6 +38,12 @@ const pgSchema = new mongoose.Schema(
       }
     ],
 
+    rules: [
+      {
+        type: String
+      }
+    ],
+
     images: [
       {
         key: {

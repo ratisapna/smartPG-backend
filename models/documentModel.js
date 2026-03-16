@@ -5,7 +5,8 @@ const documentSchema = new mongoose.Schema({
   tenantId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Tenant",
-    required: true
+    required: true,
+    index: true
   },
 
   type: {
@@ -27,8 +28,9 @@ const documentSchema = new mongoose.Schema({
 
   verificationStatus: {
     type: String,
-    enum: ["PENDING", "VERIFIED", "REJECTED"],
-    default: "PENDING"
+    enum: ["UPLOADED", "PENDING", "VERIFIED", "REJECTED"],
+    default: "UPLOADED",
+    index: true
   }
 
 }, { timestamps: true });

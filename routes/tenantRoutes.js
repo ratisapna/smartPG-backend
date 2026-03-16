@@ -4,7 +4,8 @@ import {
   getTenants,
   getTenantById,
   updateTenant,
-  deleteTenant
+  deleteTenant,
+  getMyTenantRecord
 } from "../controllers/tenantController.js";
 
 import { protect } from "../middlewares/authMiddleware.js";
@@ -14,6 +15,9 @@ const router = express.Router();
 
 /* Create tenant */
 router.post("/", protect, authorizeRoles("OWNER"), createTenant);
+
+/* Get my tenant record */
+router.get("/me", protect, getMyTenantRecord);
 
 /* Get all tenants */
 router.get("/", protect, authorizeRoles("OWNER"), getTenants);

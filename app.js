@@ -35,7 +35,15 @@ app.use(
 );
 
 app.use(morgan("dev"));
-app.use(express.json({ limit: "1kb" }));
+app.use(express.json({ limit: "10mb" }));
+
+// DEBUG LOGGING
+app.use((req, res, next) => {
+  if (["POST", "PUT", "PATCH"].includes(req.method)) {
+    console.log(`[DEBUG] ${req.method} ${req.url} - Body:`, JSON.stringify(req.body, null, 2));
+  }
+  next();
+});
 
 /* ---------- Health Route ---------- */
 

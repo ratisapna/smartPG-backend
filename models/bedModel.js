@@ -18,9 +18,21 @@ const bedSchema = new mongoose.Schema(
       default: false
     },
 
+    status: {
+      type: String,
+      enum: ["VACANT", "OCCUPIED"],
+      default: "VACANT"
+    },
+
     tenantId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Tenant",
+      default: null
+    },
+
+    residentId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
       default: null
     }
   },

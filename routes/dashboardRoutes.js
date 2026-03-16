@@ -21,9 +21,9 @@ router.get(
 /* Tenant dashboard */
 
 router.get(
-  "/tenant/:tenantId",
+  "/tenant",
   protect,
-  authorizeRoles("TENANT", "OWNER"),
+  authorizeRoles("TENANT"),
   tenantDashboard
 );
 

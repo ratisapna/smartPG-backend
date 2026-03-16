@@ -8,7 +8,7 @@ export const getBedsByRoom = async (req, res) => {
 
     const { roomId } = req.params;
 
-    const beds = await Bed.find({ roomId });
+    const beds = await Bed.find({ roomId }).populate("residentId", "name email phone");
 
     res.json({
       success: true,

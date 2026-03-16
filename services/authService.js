@@ -4,8 +4,8 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "../models/userModel.js";
 
-export const registerOwner = async (data) => {
-  const { name, email, phone, password } = data;
+export const registerUser = async (data) => {
+  const { name, email, phone, password, role } = data;
 
   const existingUser = await User.findOne({ email });
 
@@ -20,7 +20,7 @@ export const registerOwner = async (data) => {
     email,
     phone,
     password: hashedPassword,
-    role: "OWNER"
+    role: role || "TENANT"
   });
 
   return user;

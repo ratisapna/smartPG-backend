@@ -8,9 +8,12 @@ const activitySchema = new mongoose.Schema({
       "TENANT_CREATED",
       "PAYMENT_RECEIVED",
       "COMPLAINT_CREATED",
+      "COMPLAINT_UPDATED",
       "DOCUMENT_UPLOADED",
       "VISIT_REQUEST",
-      "EXIT_REQUEST"
+      "EXIT_REQUEST",
+      "ROOM_CREATED",
+      "RENT_PAID"
     ]
   },
 
@@ -21,6 +24,11 @@ const activitySchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
+  },
+
+  pgId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "PG"
   },
 
   referenceId: {

@@ -8,6 +8,13 @@ const complaintSchema = new mongoose.Schema(
       required: true
     },
 
+    pgId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "PG",
+      required: true,
+      index: true
+    },
+
     title: {
       type: String,
       required: true,

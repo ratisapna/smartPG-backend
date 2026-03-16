@@ -1,14 +1,14 @@
 // controllers/authController.js
 
-import { registerOwner, loginUser } from "../services/authService.js";
+import { registerUser, loginUser } from "../services/authService.js";
 
 export const register = async (req, res) => {
   try {
-
-    const user = await registerOwner(req.body);
+    const user = await registerUser(req.body);
 
     res.status(201).json({
-      message: "Owner registered successfully",
+      success: true,
+      message: `${user.role} registered successfully`,
       user
     });
 

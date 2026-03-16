@@ -2,7 +2,9 @@ import express from "express";
 import {
   generateFees,
   getFees,
-  getTenantFees
+  getTenantFees,
+  getMyFees,
+  markFeeAsPaid
 } from "../controllers/feesController.js";
 
 import { protect } from "../middlewares/authMiddleware.js";
@@ -18,5 +20,11 @@ router.get("/", protect, authorizeRoles("OWNER"), getFees);
 
 /* Get tenant fees */
 router.get("/tenant/:tenantId", protect, getTenantFees);
+
+/* Get my fees (Tenant) */
+router.get("/my", protect, getMyFees);
+
+/* Mark fee as paid (Owner) */
+router.post("/mark-paid", protect, authorizeRoles("OWNER"), markFeeAsPaid);
 
 export default router;

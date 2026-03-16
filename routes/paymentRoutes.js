@@ -1,6 +1,7 @@
 import express from "express";
 import {
-  createPayment,
+  createRazorpayOrder,
+  verifyRazorpayPayment,
   getPayments
 } from "../controllers/paymentController.js";
 
@@ -8,7 +9,8 @@ import { protect } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/", protect, createPayment);
+router.post("/create-order", protect, createRazorpayOrder);
+router.post("/verify", protect, verifyRazorpayPayment);
 
 router.get("/", protect, getPayments);
 

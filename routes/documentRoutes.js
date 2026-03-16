@@ -9,11 +9,14 @@ import {
 import { protect } from "../middlewares/authMiddleware.js";
 import { authorizeRoles } from "../middlewares/roleMiddleware.js";
 
+import { documentValidator } from "../validators/documentValidator.js";
+import { validate } from "../validators/validate.js";
+
 const router = express.Router();
 
 /* Tenant uploads document */
 
-router.post("/", protect, createDocument);
+router.post("/", protect, documentValidator, validate, createDocument);
 
 /* Get tenant documents */
 
